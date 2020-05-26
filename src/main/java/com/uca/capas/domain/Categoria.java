@@ -27,8 +27,8 @@ public class Categoria {
 	@Column (name = "s_categoria")
 	private String sCategoria;
 	
-	@OneToMany(mappedBy="cat_categoria", fetch=FetchType.EAGER)
-	private List<Libro> libros;
+	//@OneToMany(mappedBy="cat_categoria", fetch=FetchType.EAGER)
+	//private List<Libro> libros;
 	
 	public Categoria() {
 		super();
@@ -49,7 +49,7 @@ public class Categoria {
 	public void setsCategoria(String sCategoria) {
 		this.sCategoria = sCategoria;
 	}
-
+	/*
 	public List<Libro> getLibros() {
 		return libros;
 	}
@@ -57,6 +57,6 @@ public class Categoria {
 	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
 	}
-	
+	*/
 	
 }

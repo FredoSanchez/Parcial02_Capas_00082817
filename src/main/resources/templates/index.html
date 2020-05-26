@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<body>
+	<form th:action="@{/insertarCategoria}" method="post">
+		<input type="submit" value="Insertar Categoria">
+	</form>
+	<br>
+	<form th:action="@{/insertarLibro}">
+    	<input type="submit" value="Insertar Libro">
+	</form>
+	<br>
+	<form th:action="@{/verLibros}" method="post">
+    	<input type="submit" value="Ver Libros">
+	</form>
+</body>
+</html>
