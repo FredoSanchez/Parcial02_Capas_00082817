@@ -40,6 +40,8 @@ public class LibroServiceImpl implements LibroService {
 		libro.setFechaIngreso(fFecha);
 		libro.setCategoria(categoriaService.findOne(libro.getC_categoria()));
 		libroDAO.insert(libro);
+		
+		
 	}
 
 }

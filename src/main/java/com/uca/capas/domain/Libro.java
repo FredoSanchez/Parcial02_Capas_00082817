@@ -19,6 +19,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table (schema="public", name="cat_libro")
 public class Libro {
@@ -45,7 +47,9 @@ public class Libro {
 	@Transient
 	private Integer c_categoria;
 	
-	@Column (name = "f_ingreso")
+	
+	@DateTimeFormat(pattern="dd/MM/yyyy hh:mm")
+	@Column(name="f_ingreso")
 	private Date fechaIngreso;
 	
 	@NotNull
