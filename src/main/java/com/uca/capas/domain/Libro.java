@@ -1,5 +1,6 @@
 package com.uca.capas.domain;
 
+//import java.beans.Transient;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -39,6 +41,9 @@ public class Libro {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_categoria")
 	private Categoria categoria;
+	
+	@Transient
+	private Integer c_categoria;
 	
 	@Column (name = "f_ingreso")
 	private Date fechaIngreso;
@@ -112,6 +117,14 @@ public class Libro {
 		this.isbn = isbn;
 	}
 	
+	public Integer getC_categoria() {
+		return c_categoria;
+	}
+
+	public void setC_categoria(Integer c_categoria) {
+		this.c_categoria = c_categoria;
+	}
+
 	public String getFechaIngresoDelegate() {
 		if(this.fechaIngreso == null){
 			return "";
