@@ -51,7 +51,7 @@ public class MainController {
 		return mav;
 	}
 	@RequestMapping("/insertarCategoria")
-	public ModelAndView ingresarCat() {
+	public ModelAndView ingresarCategoria() {
 		ModelAndView mav = new ModelAndView();
 		Categoria categoria = new Categoria();
 		mav.addObject("categoria", categoria);
@@ -70,15 +70,39 @@ public class MainController {
 			catch(Exception e) { e.printStackTrace(); }
 			String mensaje ="Categoría guardada con éxito";
 			mav.addObject("mensaje", mensaje);
-			mav.setViewName("index");
-			
-			
-			
-		
+			mav.setViewName("index");		
 		}
 		return mav;
 	}
 	
+	@RequestMapping("/insertarLibro")
+	public ModelAndView ingresarLibro() {
+		ModelAndView mav = new ModelAndView();
+		Libro libro = new Libro();
+		List<Categoria> categorias = categoriaService.findAll();
+		mav.addObject("categorias", categorias);
+		mav.addObject("libro", libro);
+		mav.setViewName("agregarLibro");
+		return mav;
+	}
+	
+	@PostMapping("/agregarLibro")
+	public ModelAndView guardarLibro(@Valid @ModelAttribute Libro libro, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		if(result.hasErrors()) {
+			List<Categoria> categorias = categoriaService.findAll();
+			mav.addObject("categorias", categorias);
+			mav.addObject("libro", libro);
+			mav.setViewName("agregarLibro");
+		}else {
+			try { libroService.insert(libro); }
+			catch(Exception e) { e.printStackTrace(); }
+			String mensaje ="Libro guardado con éxito";
+			mav.addObject("mensaje", mensaje);
+			mav.setViewName("index");		
+		}
+		return mav;
+	}
 	
 	
 	
