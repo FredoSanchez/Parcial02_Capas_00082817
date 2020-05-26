@@ -108,6 +108,14 @@ public class Libro {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
+	
+	public String getEstadoDelegate() {
+		if(this.estado==null) {
+			return "";
+		} else {
+			return estado == true ? "Activo" : "Inactivo";
+		}
+	}
 
 	public String getIsbn() {
 		return isbn;
