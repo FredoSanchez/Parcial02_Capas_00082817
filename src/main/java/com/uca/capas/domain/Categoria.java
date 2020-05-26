@@ -19,7 +19,7 @@ public class Categoria {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column (name = "c_importancia")
+	@Column (name = "c_categoria")
 	private Integer cCategoria;
 	
 	@Size(message = "El campo no debe contener mas de 50 caracteres", max=50)
