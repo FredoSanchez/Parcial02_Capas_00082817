@@ -38,7 +38,7 @@ public class Libro {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_categoria")
-	private Integer categoria;
+	private Categoria categoria;
 	
 	@Column (name = "f_ingreso")
 	private Date fechaIngreso;
@@ -80,11 +80,11 @@ public class Libro {
 		this.autor = autor;
 	}
 
-	public Integer getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Integer categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
