@@ -5,6 +5,7 @@
 <title>Home</title>
 </head>
 <body>
+	<p><span th:text="${mensaje}" ></span></p>
 	<form th:action="@{/insertarCategoria}" method="post">
 		<input type="submit" value="Insertar Categoria">
 	</form>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Nuevo estudiante</title>
+</head>
+<body>
+	<h1>Ingresar nuevo estudiante</h1>
+	<form th:action="@{/agregarCategoria}" th:object="${categoria}" method="post">
+		<label>Nombre categoria: </label>
+		<input th:field="*{sCategoria}" type="text">
+		<span th:errors="*{sCategoria}" style="color:#E81505"></span>
+		<br>
+		
+		<input type="submit" value="Guardar">
+		
+	</form>
+	<form th:action="@{/index}">
+    	<input type="submit" value="Regresar">
+	</form>
+</body>
+</html>

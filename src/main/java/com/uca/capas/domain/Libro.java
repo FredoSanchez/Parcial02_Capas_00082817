@@ -139,7 +139,7 @@ public class Libro {
 		}
 		else{
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy hh:mm");
 			String fecha = sdf.format(this.fechaIngreso);
 			return fecha;
 		}

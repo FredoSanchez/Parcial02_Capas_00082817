@@ -2,11 +2,17 @@ package com.uca.capas.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.uca.capas.domain.Categoria;
 import com.uca.capas.domain.Libro;
 import com.uca.capas.service.CategoriaService;
 import com.uca.capas.service.LibroService;
@@ -22,6 +28,8 @@ public class MainController {
 	@RequestMapping("/index")
 	public ModelAndView main() {
 		ModelAndView mav = new ModelAndView();
+		String mensaje ="";
+		mav.addObject("mensaje", mensaje);
 		mav.setViewName("index");
 		return mav;
 	}
@@ -40,6 +48,34 @@ public class MainController {
 		
 		mav.addObject("libros", libros);
 		mav.setViewName("listaLibros");
+		return mav;
+	}
+	@RequestMapping("/insertarCategoria")
+	public ModelAndView ingresarCat() {
+		ModelAndView mav = new ModelAndView();
+		Categoria categoria = new Categoria();
+		mav.addObject("categoria", categoria);
+		mav.setViewName("agregarCategoria");
+		return mav;
+	}
+	
+	@PostMapping("/agregarCategoria")
+	public ModelAndView guardarCategoria(@Valid @ModelAttribute Categoria categoria, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		if(result.hasErrors()) {
+			mav.addObject("categoria", categoria);
+			mav.setViewName("agregarCategoria");
+		}else {
+			try { categoriaService.insert(categoria); }
+			catch(Exception e) { e.printStackTrace(); }
+			String mensaje ="Categoría guardada con éxito";
+			mav.addObject("mensaje", mensaje);
+			mav.setViewName("index");
+			
+			
+			
+		
+		}
 		return mav;
 	}
 	
